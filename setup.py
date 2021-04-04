@@ -16,7 +16,6 @@ driver = webdriver.Chrome()
 
 login(driver)
 
-
 driver.get("https://infinitecampus.naperville203.org/campus/nav-wrapper/student/portal/student/grades")
 time.sleep(1)
 driver.switch_to.frame(0)
@@ -24,7 +23,6 @@ time.sleep(1)
 
 search_grades_cards = driver.find_elements_by_xpath("//div[@class='collapsible-card grades__card']")
 for element in search_grades_cards:
-   
     all_divs = element.find_elements(By.TAG_NAME, "div") 
     course_name = all_divs[0].find_elements_by_class_name("ellipsis-container")
     print(course_name[0].text)

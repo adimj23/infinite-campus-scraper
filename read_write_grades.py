@@ -6,10 +6,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options
-from secret import IC_ID, IC_PW
+from secret import IC_ID, IC_PW, SHEET_NAME
 from schemas import Student, Course, Grade
 from create_profile import login
 from datetime import date
+import gspread
+import schemas
+import pandas as pd
 
 driver = webdriver.Chrome()
 
@@ -36,3 +39,14 @@ for element in grade_finder:
             
     counter += 1
 
+
+gc = gspread.service_account(filename="creds.json")
+sh = gc.open(SHEET_NAME).sheet1
+
+"""
+daily_grades = []
+for course in student.courses:
+    daily_grades.append(course.get_grade(-1))
+
+sh.append_row(daily_grades)
+"""
