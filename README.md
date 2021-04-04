@@ -17,3 +17,4 @@
 6. Rename this file to "creds.json"
 7. In Google Drive, create and title a new Google Sheet. You will need this name later.
 8. Open creds.json and copy the "client_email" value and share your Sheet with this email.
+
