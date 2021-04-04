@@ -1,5 +1,9 @@
 # infinite-campus-scraper
 
+# Required Libraries
+- selenium
+- pandas
+
 # Setting up some constants
 1. In secret-template.py, replace all lines with your info.
 2. Rename the file to secret.py
