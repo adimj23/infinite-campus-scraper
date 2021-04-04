@@ -6,12 +6,14 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options
-from secret import SHEET_NAME
+from secret import SHEET_NAME, DRIVER_PATH
 from login import login 
 import gspread
 
 def add_courses():
-    driver = webdriver.Chrome()
+    my_options = webdriver.ChromeOptions()
+    my_options.headless = True
+    driver = webdriver.Chrome(DRIVER_PATH, options=my_options)
     login(driver)
 
     driver.get("https://infinitecampus.naperville203.org/campus/nav-wrapper/student/portal/student/grades")
