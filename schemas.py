@@ -4,7 +4,7 @@ class Student:
         self.last_name = last
         self.courses = []
 
-    def add_course(Course course)
+    def add_course(course):
         self.courses.append(courses)
 
 class Course:
