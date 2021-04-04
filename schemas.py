@@ -16,6 +16,7 @@ class Student:
             course_names.append(i.get_name())
         return course_names
 
+
 class Course:
     def __init__(self, name=""):
         self.course_name = name
@@ -30,6 +31,7 @@ class Course:
     def get_grade(self, index):
         if (index >= len(self.course_grades)):
             return None
+
         return self.course_grades[index]
 
     def add_grade(self, new_grade):
