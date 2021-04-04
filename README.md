@@ -3,7 +3,6 @@ Python selenium to scrape Infinite Campus for course and grades.
 
 # Required Libraries
 - selenium
-- pandas
 - gspread
 
 # Setting up some constants
