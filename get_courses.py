@@ -8,17 +8,14 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options
 from secret import IC_ID, IC_PW
 from schemas import Student, Course, Grade
+from create_profile import login, student
 
 # create webdriver object
 driver = webdriver.Chrome()
-# get IC login
-driver.get("https://infinitecampus.naperville203.org/campus/portal/students/naperville.jsp")
 
-username = driver.find_element_by_id("username")
-password = driver.find_element_by_id("password")
-username.send_keys(IC_ID)
-password.send_keys(IC_PW)
-driver.find_element_by_xpath("//input[@type='submit']").click()
+login(driver)
+
+
 
 driver.get("https://infinitecampus.naperville203.org/campus/nav-wrapper/student/portal/student/grades")
 time.sleep(1)
@@ -31,4 +28,6 @@ for element in search_grades_cards:
     all_divs = element.find_elements(By.TAG_NAME, "div") 
     course_name = all_divs[0].find_elements_by_class_name("ellipsis-container")
     print(course_name[0].text)
+    course = Course(course_name[0].text)
+    student.add_course(course)
     
