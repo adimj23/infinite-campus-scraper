@@ -32,47 +32,49 @@ driver.switch_to.frame(0)
 time.sleep(1)
 
 # search_grades_card = driver.find_elements_by_class_name("ellipsis-container")
- # search_grades_card = driver.find_elements(By.TAG_NAME, "div") # driver.find_elements_by_tag_name('a')
+# search_grades_cards = driver.find_elements(By.TAG_NAME, "div") 
+
 # search_grades_card = driver.find_elements(By.CLASS_NAME, "grades__flex-row--nowrap ng-star-inserted")
 #type(search_grades_card[0])
 #print(search_grades_card[1].get_attribute('class'))
 # print(len(search_grades_card))
 
-search_grades_cards = driver.find_elements_by_xpath("//div[@class='collapsible-card grades__card']")
-"""
-for element in search_rows:
-    print(BeautifulSoup(element.get_attribute('innerHTML'), 'html.parser').prettify())
-    print()
-"""
+# search_grades_cards = driver.find_elements_by_xpath("//div[@class='collapsible-card grades__card']")
+# search_rows = search_grades_cards[0].find_elements_by_xpath("//span[@*] | //a[@*]")
+# print(BeautifulSoup(search_grades_cards[0].get_attribute('innerHTML'), 'html.parser').prettify())
+
+
+>>>>>>> 46ce6953de6d9f67716b830d34c78854c9e48ec1
 #print(BeautifulSoup(search_spans[0].get_attribute('innerHTML'), 'html.parser').prettify())
 """
 print(BeautifulSoup(search_grades_cards[0].get_attribute('innerHTML'), 'html.parser').prettify())
 print(BeautifulSoup(search_grades_cards[1].get_attribute('innerHTML'), 'html.parser').prettify())
 """
+search_grades_cards = driver.find_elements_by_xpath("//div[@class='collapsible-card grades__card']")
+
 for element in search_grades_cards:
-    print(BeautifulSoup(element.get_attribute('outerHTML'), 'html.parser').prettify())
+    all_divs = element.find_elements(By.TAG_NAME, "div") 
+    course_name = all_divs[0].find_elements_by_class_name("ellipsis-container")
+    print(course_name[0].text)
+
+# for element in search_grades_cards:
+#     # print(BeautifulSoup(element.get_attribute('outerHTML'), 'html.parser').prettify())
     
-    # print(element.get_attribute('outerHTML'))
-    print(element.get_attribute('class'))
-    print(element.get_attribute('id'))
-    print(element.get_attribute('text'))
+#     # print(element.get_attribute('outerHTML'))
+#     # print(element.get_attribute('class'))
+#     # print(element.get_attribute('id'))
+#     # print(element.get_attribute('text'))
+    
 
-    course_name = element.find_element_by_xpath(".//div/div/div/a").get_attribute("text")
-    print(course_name)
+#     if element.get_attribute('class') == 'grades__flex-row__item grades__flex-row__item--left':
+#         print(element.text)
+#         if element.text == "Semester Grade":
+#             row_info = element.find_element_by_xpath('..')
+#             # print("ya")
+#             semester_grade = row_info.find_element_by_class_name("grading-score__row-spacing")
+#             print(element.text + ":", semester_grade.text)
 
-    search_rows = element.find_elements_by_xpath("//tr")
-    # for elem in search_rows:
-    #     print(BeautifulSoup(elem.get_attribute('outerHTML'), 'html.parser').prettify())
-    #     print()
 
-    if element.get_attribute('class') == 'grades__flex-row__item grades__flex-row__item--left':
-        #  print(element.text)
-        if element.text == "Semester Grade":
-            row_info = element.find_element_by_xpath('..')
-            # print("ya")
-            semester_grade = row_info.find_element_by_class_name("grading-score__row-spacing")
-            print(element.text + ":", semester_grade.text)
-    break
 # for element in search_grades_card:
 #     # print(element.get_attribute('class'))
 #     # print(element.get_attribute('id'))
