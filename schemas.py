@@ -4,7 +4,7 @@ class Student:
         self.last_name = last
         self.courses = []
 
-    def add_course(Course course)
+    def add_course(course):
         self.courses.append(courses)
 
 class Course:
@@ -21,7 +21,7 @@ class Course:
     def get_grade(index):
         if (index >= len(self.course_grades)):
             return null
-        return self_grades[index]
+        return self.course_grades[index]
 
     def add_grade(new_grade):
         self.course_grades.append(new_grade)
