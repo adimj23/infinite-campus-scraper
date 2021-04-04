@@ -39,22 +39,31 @@ time.sleep(1)
 # print(len(search_grades_card))
 
 search_grades_cards = driver.find_elements_by_xpath("//div[@class='collapsible-card grades__card']")
-search_rows = search_grades_cards[0].find_elements_by_xpath("//span[@*] | //a[@*]")
-print(BeautifulSoup(search_grades_cards[0].get_attribute('innerHTML'), 'html.parser').prettify())
+"""
+for element in search_rows:
+    print(BeautifulSoup(element.get_attribute('innerHTML'), 'html.parser').prettify())
+    print()
+"""
 #print(BeautifulSoup(search_spans[0].get_attribute('innerHTML'), 'html.parser').prettify())
 """
 print(BeautifulSoup(search_grades_cards[0].get_attribute('innerHTML'), 'html.parser').prettify())
 print(BeautifulSoup(search_grades_cards[1].get_attribute('innerHTML'), 'html.parser').prettify())
 """
-"""
 for element in search_grades_cards:
-    # print(BeautifulSoup(element.get_attribute('outerHTML'), 'html.parser').prettify())
+    print(BeautifulSoup(element.get_attribute('outerHTML'), 'html.parser').prettify())
     
-    print(element.get_attribute('outerHTML'))
+    # print(element.get_attribute('outerHTML'))
     print(element.get_attribute('class'))
     print(element.get_attribute('id'))
     print(element.get_attribute('text'))
-    
+
+    course_name = element.find_element_by_xpath(".//div/div/div/a").get_attribute("text")
+    print(course_name)
+
+    search_rows = element.find_elements_by_xpath("//tr")
+    # for elem in search_rows:
+    #     print(BeautifulSoup(elem.get_attribute('outerHTML'), 'html.parser').prettify())
+    #     print()
 
     if element.get_attribute('class') == 'grades__flex-row__item grades__flex-row__item--left':
         #  print(element.text)
@@ -63,8 +72,7 @@ for element in search_grades_cards:
             # print("ya")
             semester_grade = row_info.find_element_by_class_name("grading-score__row-spacing")
             print(element.text + ":", semester_grade.text)
-"""
-
+    break
 # for element in search_grades_card:
 #     # print(element.get_attribute('class'))
 #     # print(element.get_attribute('id'))
@@ -81,6 +89,7 @@ print("No more script")
 time.sleep(30)
 
 """
+
 delay = 30
 try:
     myElem = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.CLASS_NAME, 'collapsible-card grades__card')))
