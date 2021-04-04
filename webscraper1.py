@@ -8,14 +8,19 @@ import time
 import selenium
 from secret import IC_ID, IC_PW
 
+DRIVER_PATH = r"C:\Users\k3vnx\Documents\GitHub\infinite-campus-scraper\chromedriver.exe"
+
+# make headless
+options = webdriver.ChromeOptions()
+options.headless = True
+
 # create webdriver object
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(executable_path=r"C:\Users\k3vnx\Documents\GitHub\infinite-campus-scraper\chromedriver.exe",  chrome_options= options)
 # get IC login
 driver.get("https://infinitecampus.naperville203.org/campus/portal/students/naperville.jsp")
 
 username = driver.find_element_by_id("username")
 password = driver.find_element_by_id("password")
-
 
 
 username.send_keys(IC_ID)
