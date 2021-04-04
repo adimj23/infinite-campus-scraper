@@ -6,27 +6,28 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options
-from secret import IC_ID, IC_PW
-from schemas import Student, Course, Grade
-from create_profile import login
+from secret import SHEET_NAME
+from login import login 
+import gspread
 
-student = Student("Bob", "Ross")
+def add_courses():
+    driver = webdriver.Chrome()
+    login(driver)
 
-driver = webdriver.Chrome()
+    driver.get("https://infinitecampus.naperville203.org/campus/nav-wrapper/student/portal/student/grades")
+    time.sleep(1)
+    driver.switch_to.frame(0)
+    time.sleep(1)
+    search_grades_cards = driver.find_elements_by_xpath("//div[@class='collapsible-card grades__card']")
+    courses = ["Date"]
+    for element in search_grades_cards:
+        all_divs = element.find_elements(By.TAG_NAME, "div") 
+        course_name = all_divs[0].find_elements_by_class_name("ellipsis-container")
+        courses.append(course_name[0].text)
 
-login(driver)
+    # add courses to google sheet
+    gc = gspread.service_account(filename="creds.json")
+    sh = gc.open(SHEET_NAME).sheet1
+    sh.append_row(courses)
 
-
-driver.get("https://infinitecampus.naperville203.org/campus/nav-wrapper/student/portal/student/grades")
-time.sleep(1)
-driver.switch_to.frame(0)
-time.sleep(1)
-
-search_grades_cards = driver.find_elements_by_xpath("//div[@class='collapsible-card grades__card']")
-for element in search_grades_cards:
-   
-    all_divs = element.find_elements(By.TAG_NAME, "div") 
-    course_name = all_divs[0].find_elements_by_class_name("ellipsis-container")
-    print(course_name[0].text)
-    course = Course(course_name[0].text)
-    student.add_course(course)
+add_courses()
