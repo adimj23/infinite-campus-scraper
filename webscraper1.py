@@ -44,7 +44,6 @@ time.sleep(1)
 # print(BeautifulSoup(search_grades_cards[0].get_attribute('innerHTML'), 'html.parser').prettify())
 
 
->>>>>>> 46ce6953de6d9f67716b830d34c78854c9e48ec1
 #print(BeautifulSoup(search_spans[0].get_attribute('innerHTML'), 'html.parser').prettify())
 """
 print(BeautifulSoup(search_grades_cards[0].get_attribute('innerHTML'), 'html.parser').prettify())
