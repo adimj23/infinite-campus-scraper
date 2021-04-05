@@ -132,3 +132,4 @@ dmypy.json
 secret.py
 creds.json
 scrape-grades.bat
+.DS_Store
