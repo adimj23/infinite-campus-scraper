@@ -1,5 +1,5 @@
 # infinite-campus-scraper
-Python selenium to scrape Infinite Campus for course and grades.
+Python selenium to scrape Infinite Campus for course and grades to a linked Google Sheet
 
 # Required Libraries
 - selenium
