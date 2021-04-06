@@ -25,7 +25,6 @@ def add_grades(): # get list of course grades
 
     daily_grades = []
     date_time = datetime.now().strftime("%m/%d/%Y")    
-    print(date_time)
     daily_grades.append(date_time)
     
     for element in grade_finder:
