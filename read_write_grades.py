@@ -25,6 +25,7 @@ def add_grades(): # get list of course grades
 
     daily_grades = []
     date_time = datetime.now().strftime("%m/%d/%Y")    
+    print(date_time)
     daily_grades.append(date_time)
     
     for element in grade_finder:
@@ -39,6 +40,6 @@ def add_grades(): # get list of course grades
 
     gc = gspread.service_account(filename="creds.json")
     sh = gc.open(SHEET_NAME).sheet1
-    sh.append_row(daily_grades)
+    sh.append_row(daily_grades, 'USER_ENTERED')
 
 add_grades()
