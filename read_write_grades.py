@@ -35,7 +35,7 @@ def add_grades(): # get list of course grades
                 # print("ya")
                 semester_grade = row_info.find_element_by_class_name("grading-score__row-spacing")
                 grade_as_num = semester_grade.text.strip("(%)")
-                daily_grades.append(float(grade_as_num))
+                daily_grades.append(float(grade_as_num)/100)
 
     gc = gspread.service_account(filename="creds.json")
     sh = gc.open(SHEET_NAME).sheet1
