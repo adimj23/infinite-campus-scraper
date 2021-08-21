@@ -61,7 +61,7 @@ def add_grades(driver, filename): # get list of course grades
                     grade_as_num = semester_grade.text.strip("(%)")
                     daily_grades.append(float(grade_as_num)/100)
                 except:
-                    daily_grades.append(100)
+                    daily_grades.append(1)
 
     gc = gspread.service_account(filename="creds.json")
     sh = gc.open(filename).sheet1
