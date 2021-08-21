@@ -7,7 +7,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 my_options = webdriver.ChromeOptions()
-# my_options.headless = True
+my_options.headless = True
 
 file = open('secret.json', "r")
 obj = json.load(file)
