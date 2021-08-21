@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 # Local Files
-secret.py
+secret.json
 creds.json
 scrape-grades.bat
 .DS_Store
