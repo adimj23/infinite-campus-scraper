@@ -78,3 +78,5 @@ if obj["IS_NEW_TERM"]:
     json.dump(obj, file, sort_keys=True, indent=4)
     
 add_grades(driver, obj["SHEET_NAME"])
+
+driver.quit();
