@@ -1,6 +1,6 @@
 # Naperville203 Infinite Campus Scraper
 # About
-Python selenium to scrape Infinite Campus for course and grades to a linked Google Sheet.
+Python selenium to scrape Infinite Campus for course and grades to a linked Google Sheet. Created for Uncommon Hacks 2021.
 
 # Required Libraries
 - selenium
